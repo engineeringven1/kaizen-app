@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import StatusBadge from '@/components/StatusBadge';
-import { formatDateShort } from '@/lib/utils';
+import { formatDateShort, getNewsletterStatusLabel } from '@/lib/utils';
 
 export default function LeadTable({ leads }) {
   if (!leads.length) {
@@ -58,9 +58,7 @@ export default function LeadTable({ leads }) {
 
               <td>
                 {lead._nextAction || 'Sin acción inmediata'}
-                <span className="muted-row">
-                  {lead.newsletter_enviado ? 'Newsletter enviada' : 'Newsletter pendiente o no usada'}
-                </span>
+                <span className="muted-row">{getNewsletterStatusLabel(lead)}</span>
               </td>
 
               <td>{formatDateShort(lead.ultimo_contacto || lead.fecha_registro)}</td>
