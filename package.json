@@ -1,0 +1,18 @@
+{
+  "name": "kaizen-secretary-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "node .next/standalone/server.js",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
+    "next": "14.2.33",
+    "papaparse": "^5.5.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  }
+}
