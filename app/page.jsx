@@ -1,49 +1,41 @@
-import { getAllLeads, getDashboardStats } from '@/lib/leads';
+import DashboardCards from '@/components/DashboardCards';
+import LeadFilters from '@/components/LeadFilters';
+import LeadTable from '@/components/LeadTable';
+import { buildDashboardStats, getAllLeads } from '@/lib/leads';
 
-export default async function HomePage() {
+export default async function HomePage({ searchParams }) {
+  const filters = {
+    q: searchParams?.q || '',
+    country: searchParams?.country || '',
+    onlyPending: searchParams?.onlyPending === 'true'
+  };
+
   try {
-    const [stats, leads] = await Promise.all([
-      getDashboardStats({}),
-      getAllLeads({})
-    ]);
+    const leads = await getAllLeads(filters);
+    const stats = buildDashboardStats(leads);
 
     return (
-      <main style={{ padding: '40px', fontFamily: 'Arial, sans-serif' }}>
-        <h1>Kaizen Secretary App</h1>
-        <p>Conexion a Supabase exitosa.</p>
+      <div className="page-stack">
+        <section className="hero card">
+          <div>
+            <p className="eyebrow">Operacion diaria</p>
+            <h2>Seguimiento comercial y panel de secretaria</h2>
+            <p>
+              La secretaria solo debe actualizar seguimiento comercial: interes, objeciones,
+              cotizacion, newsletter, seguimientos 24h / 72h / 7 dias, observaciones y responsable.
+            </p>
+          </div>
+        </section>
 
-        <h2>Resumen</h2>
-        <p>Total leads: {Array.isArray(leads) ? leads.length : 0}</p>
-
-        <pre
-          style={{
-            whiteSpace: 'pre-wrap',
-            wordBreak: 'break-word',
-            background: '#111827',
-            color: '#f9fafb',
-            padding: '16px',
-            borderRadius: '12px',
-            overflowX: 'auto',
-            marginBottom: '24px'
-          }}
-        >
-          {JSON.stringify(stats, null, 2)}
-        </pre>
-
-        <h2>Primeros 10 leads</h2>
-        <ul>
-          {(leads || []).slice(0, 10).map((lead) => (
-            <li key={lead.id}>
-              #{lead.id} - {lead.nombre_completo || 'Sin nombre'} - {lead.servicio_requerido || 'Sin servicio'}
-            </li>
-          ))}
-        </ul>
-      </main>
+        <DashboardCards stats={stats} />
+        <LeadFilters searchParams={searchParams} countries={stats.countries} />
+        <LeadTable leads={leads} />
+      </div>
     );
   } catch (error) {
     return (
       <main style={{ padding: '40px', fontFamily: 'Arial, sans-serif' }}>
-        <h1>Error real detectado</h1>
+        <h1>Error cargando dashboard</h1>
         <pre
           style={{
             whiteSpace: 'pre-wrap',

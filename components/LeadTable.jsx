@@ -7,7 +7,7 @@ export default function LeadTable({ leads }) {
     return (
       <div className="card empty-state">
         <h3>No hay leads para mostrar</h3>
-        <p>Ajusta los filtros o conecta Supabase para ver tus datos reales.</p>
+        <p>No se encontraron resultados con los filtros actuales.</p>
       </div>
     );
   }
@@ -19,7 +19,7 @@ export default function LeadTable({ leads }) {
           <tr>
             <th>Lead</th>
             <th>Servicio</th>
-            <th>Pais / ciudad</th>
+            <th>Ubicacion</th>
             <th>Score</th>
             <th>Estado</th>
             <th>Ultimo contacto</th>
@@ -32,18 +32,31 @@ export default function LeadTable({ leads }) {
               <td>
                 <strong>{lead.nombre_completo || 'Sin nombre'}</strong>
                 <span className="muted-row">{lead.email || 'Sin email'}</span>
+                <span className="muted-row">{lead.telefono || 'Sin telefono'}</span>
               </td>
-              <td>{lead.servicio_requerido || '—'}</td>
+
+              <td>
+                {lead.servicio_requerido || '—'}
+                <span className="muted-row">{lead.tipo_obra || 'Sin tipo de obra'}</span>
+              </td>
+
               <td>
                 {lead.pais || '—'}
                 <span className="muted-row">{lead.ciudad || 'Sin ciudad'}</span>
               </td>
-              <td>{lead.p_promedio_ponderado ?? '—'}</td>
+
+              <td>
+                {lead.p_promedio_ponderado ?? '—'}
+                <span className="muted-row">{lead.urgencia_proyecto || 'Sin urgencia'}</span>
+              </td>
+
               <td>
                 <StatusBadge status={lead._status} />
-                <span className="muted-row">{lead._status.reason}</span>
+                <span className="muted-row">{lead._status?.reason || 'Sin detalle'}</span>
               </td>
+
               <td>{formatDateShort(lead.ultimo_contacto || lead.fecha_registro)}</td>
+
               <td>
                 <Link className="button button-secondary button-small" href={`/leads/${lead.id}`}>
                   Abrir

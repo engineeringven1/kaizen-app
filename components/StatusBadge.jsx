@@ -9,5 +9,6 @@ const toneMap = {
 };
 
 export default function StatusBadge({ status }) {
-  return <span className={cn(toneMap[status.tone] || toneMap.neutral)}>{status.label}</span>;
+  const safeStatus = status || { label: 'Sin estado', tone: 'neutral' };
+  return <span className={cn(toneMap[safeStatus.tone] || toneMap.neutral)}>{safeStatus.label}</span>;
 }
