@@ -19,10 +19,11 @@ export default function LeadTable({ leads }) {
           <tr>
             <th>Lead</th>
             <th>Servicio</th>
-            <th>Ubicacion</th>
+            <th>Ubicación</th>
             <th>Score</th>
             <th>Estado</th>
-            <th>Ultimo contacto</th>
+            <th>Próxima acción</th>
+            <th>Último contacto</th>
             <th></th>
           </tr>
         </thead>
@@ -32,7 +33,7 @@ export default function LeadTable({ leads }) {
               <td>
                 <strong>{lead.nombre_completo || 'Sin nombre'}</strong>
                 <span className="muted-row">{lead.email || 'Sin email'}</span>
-                <span className="muted-row">{lead.telefono || 'Sin telefono'}</span>
+                <span className="muted-row">{lead.telefono || 'Sin teléfono'}</span>
               </td>
 
               <td>
@@ -53,6 +54,13 @@ export default function LeadTable({ leads }) {
               <td>
                 <StatusBadge status={lead._status} />
                 <span className="muted-row">{lead._status?.reason || 'Sin detalle'}</span>
+              </td>
+
+              <td>
+                {lead._nextAction || 'Sin acción inmediata'}
+                <span className="muted-row">
+                  {lead.newsletter_enviado ? 'Newsletter enviada' : 'Newsletter pendiente o no usada'}
+                </span>
               </td>
 
               <td>{formatDateShort(lead.ultimo_contacto || lead.fecha_registro)}</td>

@@ -1,3 +1,5 @@
+import StatusBadge from '@/components/StatusBadge';
+
 function formatValue(value) {
   if (value === null || value === undefined || value === '') return '—';
   if (typeof value === 'boolean') return value ? 'Sí' : 'No';
@@ -50,6 +52,22 @@ export default function LeadSummaryCard({ lead }) {
 
   return (
     <div className="page-stack">
+      <section className="card">
+        <div className="summary-top">
+          <div>
+            <h3>Resumen ejecutivo del lead</h3>
+            <p className="muted-row">
+              Este bloque resume el estado comercial actual y el próximo paso sugerido.
+            </p>
+          </div>
+
+          <div className="status-stack">
+            <StatusBadge status={lead._status} />
+            <span className="summary-chip">{lead._nextAction || 'Sin acción inmediata'}</span>
+          </div>
+        </div>
+      </section>
+
       <section className="card">
         <h3>Datos originales del lead</h3>
         <div className="detail-grid">

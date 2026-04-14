@@ -31,23 +31,24 @@ function formatReadonlyDate(value) {
 export default function LeadOperationalForm({ lead }) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
+  const [currentLead, setCurrentLead] = useState(lead);
   const [form, setForm] = useState(() => initialStateFromLead(lead));
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
   const readonlyDates = useMemo(
     () => ({
-      fecha_newsletter: lead.fecha_newsletter,
-      fecha_respuesta_newsletter: lead.fecha_respuesta_newsletter,
-      fecha_mensaje_24h: lead.fecha_mensaje_24h,
-      fecha_respuesta_24h: lead.fecha_respuesta_24h,
-      fecha_mensaje_72h: lead.fecha_mensaje_72h,
-      fecha_respuesta_72h: lead.fecha_respuesta_72h,
-      fecha_mensaje_7d: lead.fecha_mensaje_7d,
-      fecha_respuesta_7d: lead.fecha_respuesta_7d,
-      ultimo_contacto: lead.ultimo_contacto
+      fecha_newsletter: currentLead.fecha_newsletter,
+      fecha_respuesta_newsletter: currentLead.fecha_respuesta_newsletter,
+      fecha_mensaje_24h: currentLead.fecha_mensaje_24h,
+      fecha_respuesta_24h: currentLead.fecha_respuesta_24h,
+      fecha_mensaje_72h: currentLead.fecha_mensaje_72h,
+      fecha_respuesta_72h: currentLead.fecha_respuesta_72h,
+      fecha_mensaje_7d: currentLead.fecha_mensaje_7d,
+      fecha_respuesta_7d: currentLead.fecha_respuesta_7d,
+      ultimo_contacto: currentLead.ultimo_contacto
     }),
-    [lead]
+    [currentLead]
   );
 
   function updateCheckbox(name) {
@@ -91,6 +92,7 @@ export default function LeadOperationalForm({ lead }) {
           throw new Error(data?.error || 'No se pudo actualizar el lead');
         }
 
+        setCurrentLead(data.lead);
         setForm(initialStateFromLead(data.lead));
         setMessage('Lead actualizado correctamente.');
         router.refresh();
