@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import DashboardCards from '@/components/DashboardCards';
 import LeadFilters from '@/components/LeadFilters';
 import LeadTable from '@/components/LeadTable';

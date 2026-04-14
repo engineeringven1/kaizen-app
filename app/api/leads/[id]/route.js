@@ -1,3 +1,4 @@
+import { revalidatePath } from 'next/cache';
 import { NextResponse } from 'next/server';
 import { TABLE_NAME } from '@/lib/constants';
 import { getSupabaseAdmin, hasSupabaseEnv } from '@/lib/supabase';
@@ -138,6 +139,9 @@ export async function PUT(request, { params }) {
         { status: 500 }
       );
     }
+
+    revalidatePath('/');
+    revalidatePath(`/leads/${params.id}`);
 
     return NextResponse.json({ ok: true, lead: updatedLead });
   } catch (error) {
