@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import StatusBadge from '@/components/StatusBadge';
+import QuickActionButtons from '@/components/QuickActionButtons';
 import { formatDateShort, getNewsletterStatusLabel, getInterestLabel } from '@/lib/utils';
 
 export default function LeadTable({ leads }) {
@@ -25,6 +26,7 @@ export default function LeadTable({ leads }) {
             <th>Interés</th>
             <th>Próxima acción</th>
             <th>Último contacto</th>
+            <th>Acciones</th>
             <th></th>
           </tr>
         </thead>
@@ -71,6 +73,10 @@ export default function LeadTable({ leads }) {
               </td>
 
               <td>{formatDateShort(lead.ultimo_contacto || lead.fecha_registro)}</td>
+
+              <td>
+                <QuickActionButtons lead={lead} />
+              </td>
 
               <td>
                 <Link className="button button-secondary button-small" href={`/leads/${lead.id}`}>
