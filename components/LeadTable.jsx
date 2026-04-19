@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import StatusBadge from '@/components/StatusBadge';
-import { formatDateShort, getNewsletterStatusLabel } from '@/lib/utils';
+import { formatDateShort, getNewsletterStatusLabel, getInterestLabel } from '@/lib/utils';
 
 export default function LeadTable({ leads }) {
   if (!leads.length) {
@@ -22,6 +22,7 @@ export default function LeadTable({ leads }) {
             <th>Ubicación</th>
             <th>Score</th>
             <th>Estado</th>
+            <th>Interés</th>
             <th>Próxima acción</th>
             <th>Último contacto</th>
             <th></th>
@@ -54,6 +55,14 @@ export default function LeadTable({ leads }) {
               <td>
                 <StatusBadge status={lead._status} />
                 <span className="muted-row">{lead._status?.reason || 'Sin detalle'}</span>
+              </td>
+
+              <td>
+                {(() => {
+                  const interest = getInterestLabel(lead);
+                  if (!interest) return <span className="muted-row">—</span>;
+                  return <StatusBadge status={interest} />;
+                })()}
               </td>
 
               <td>
