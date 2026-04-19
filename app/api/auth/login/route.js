@@ -8,7 +8,7 @@ export async function POST(request) {
   }
 
   const response = NextResponse.json({ ok: true });
-  response.cookies.set('kaizen_auth', process.env.APP_SESSION_SECRET, {
+  response.cookies.set('kaizen_auth', process.env.KAIZEN_ACCESS_KEY, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',

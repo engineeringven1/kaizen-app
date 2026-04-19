@@ -10,7 +10,7 @@ export function middleware(request) {
   }
 
   const session = request.cookies.get(SESSION_COOKIE);
-  const secret  = process.env.APP_SESSION_SECRET;
+  const secret  = process.env.KAIZEN_ACCESS_KEY;
 
   if (!secret || !session || session.value !== secret) {
     return NextResponse.redirect(new URL('/login', request.url));
