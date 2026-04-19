@@ -5,6 +5,11 @@ import { useMemo, useState, useTransition } from 'react';
 
 function initialStateFromLead(lead) {
   return {
+    nombre_completo: lead.nombre_completo || '',
+    email: lead.email || '',
+    telefono: lead.telefono || '',
+    pais: lead.pais || '',
+    ciudad: lead.ciudad || '',
     mostro_interes: !!lead.mostro_interes,
     hubo_objecion: !!lead.hubo_objecion,
     cotizacion_enviada: !!lead.cotizacion_enviada,
@@ -110,6 +115,57 @@ export default function LeadOperationalForm({ lead }) {
       </p>
 
       <form className="ops-form" onSubmit={handleSubmit}>
+        <div className="ops-section">
+          <h4>Datos de contacto</h4>
+          <div className="checkbox-grid">
+            <div className="field-group">
+              <label htmlFor="nombre_completo">Nombre completo</label>
+              <input
+                id="nombre_completo"
+                type="text"
+                value={form.nombre_completo}
+                onChange={updateText('nombre_completo')}
+              />
+            </div>
+            <div className="field-group">
+              <label htmlFor="email">Email</label>
+              <input
+                id="email"
+                type="text"
+                value={form.email}
+                onChange={updateText('email')}
+              />
+            </div>
+            <div className="field-group">
+              <label htmlFor="telefono">Teléfono</label>
+              <input
+                id="telefono"
+                type="text"
+                value={form.telefono}
+                onChange={updateText('telefono')}
+              />
+            </div>
+            <div className="field-group">
+              <label htmlFor="pais">País</label>
+              <input
+                id="pais"
+                type="text"
+                value={form.pais}
+                onChange={updateText('pais')}
+              />
+            </div>
+            <div className="field-group">
+              <label htmlFor="ciudad">Ciudad</label>
+              <input
+                id="ciudad"
+                type="text"
+                value={form.ciudad}
+                onChange={updateText('ciudad')}
+              />
+            </div>
+          </div>
+        </div>
+
         <div className="ops-section">
           <h4>Gestión comercial</h4>
           <div className="checkbox-grid">

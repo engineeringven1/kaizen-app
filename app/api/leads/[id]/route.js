@@ -4,6 +4,11 @@ import { TABLE_NAME } from '@/lib/constants';
 import { getSupabaseAdmin, hasSupabaseEnv } from '@/lib/supabase';
 
 const EDITABLE_FIELDS = [
+  'nombre_completo',
+  'email',
+  'telefono',
+  'pais',
+  'ciudad',
   'mostro_interes',
   'hubo_objecion',
   'cotizacion_enviada',
