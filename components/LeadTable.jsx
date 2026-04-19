@@ -26,8 +26,7 @@ export default function LeadTable({ leads }) {
             <th>Interés</th>
             <th>Próxima acción</th>
             <th>Último contacto</th>
-            <th>Acciones</th>
-            <th></th>
+            <th style={{ minWidth: '160px' }}>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -75,13 +74,12 @@ export default function LeadTable({ leads }) {
               <td>{formatDateShort(lead.ultimo_contacto || lead.fecha_registro)}</td>
 
               <td>
-                <QuickActionButtons lead={lead} />
-              </td>
-
-              <td>
-                <Link className="button button-secondary button-small" href={`/leads/${lead.id}`}>
-                  Abrir
-                </Link>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                  <Link className="button button-primary button-small" href={`/leads/${lead.id}`}>
+                    Abrir
+                  </Link>
+                  <QuickActionButtons lead={lead} />
+                </div>
               </td>
             </tr>
           ))}

@@ -44,7 +44,7 @@ export default function QuickActionButtons({ lead }) {
       {msgLabel && (
         <button
           className="button button-secondary button-small"
-          style={{ whiteSpace: 'nowrap' }}
+          style={{ width: '100%', justifyContent: 'center' }}
           disabled={isPending}
           onClick={() => markSent(msgField, msgSetter)}
         >
@@ -54,7 +54,7 @@ export default function QuickActionButtons({ lead }) {
       {newsLabel && (
         <button
           className="button button-secondary button-small"
-          style={{ whiteSpace: 'nowrap' }}
+          style={{ width: '100%', justifyContent: 'center' }}
           disabled={isPending}
           onClick={() => markSent('newsletter_enviado', setSentNews)}
         >
