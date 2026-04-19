@@ -1,11 +1,12 @@
 import { cn } from '@/lib/utils';
 
 const toneMap = {
-  success: 'badge badge-success',
-  warning: 'badge badge-warning',
-  danger: 'badge badge-danger',
-  info: 'badge badge-info',
-  neutral: 'badge badge-neutral'
+  success:  'badge badge-success',
+  warning:  'badge badge-warning',
+  warning2: 'badge badge-warning2',
+  danger:   'badge badge-danger',
+  info:     'badge badge-info',
+  neutral:  'badge badge-neutral'
 };
 
 export default function StatusBadge({ status }) {

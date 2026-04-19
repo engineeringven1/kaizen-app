@@ -229,6 +229,7 @@ th {
 
 .badge-success { background: rgba(29, 191, 115, 0.16); color: #6df3b0; }
 .badge-warning { background: rgba(255, 182, 72, 0.16); color: #ffd187; }
+.badge-warning2 { background: rgba(167, 104, 255, 0.18); color: #cc99ff; }
 .badge-danger { background: rgba(255, 107, 107, 0.16); color: #ffb1b1; }
 .badge-info { background: rgba(76, 195, 255, 0.16); color: #95deff; }
 .badge-neutral { background: rgba(255, 255, 255, 0.09); color: #d5dcff; }
