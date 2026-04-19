@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export async function POST(request) {
   const { password } = await request.json();
 
-  if (!password || password !== process.env.APP_AUTH_PASSWORD) {
+  if (!password || password !== process.env.KAIZEN_ACCESS_KEY) {
     return NextResponse.json({ error: 'Contraseña incorrecta.' }, { status: 401 });
   }
 
