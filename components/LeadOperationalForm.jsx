@@ -10,6 +10,7 @@ function initialStateFromLead(lead) {
     telefono: lead.telefono || '',
     pais: lead.pais || '',
     ciudad: lead.ciudad || '',
+    whatsapp: lead.whatsapp !== false,
     mostro_interes: !!lead.mostro_interes,
     hubo_objecion: !!lead.hubo_objecion,
     cotizacion_enviada: !!lead.cotizacion_enviada,
@@ -169,6 +170,15 @@ export default function LeadOperationalForm({ lead }) {
         <div className="ops-section">
           <h4>Gestión comercial</h4>
           <div className="checkbox-grid">
+            <label className="inline-check">
+              <input
+                type="checkbox"
+                checked={form.whatsapp}
+                onChange={updateCheckbox('whatsapp')}
+              />
+              Tiene WhatsApp
+            </label>
+
             <label className="inline-check">
               <input
                 type="checkbox"

@@ -9,6 +9,7 @@ const EDITABLE_FIELDS = [
   'telefono',
   'pais',
   'ciudad',
+  'whatsapp',
   'mostro_interes',
   'hubo_objecion',
   'cotizacion_enviada',
