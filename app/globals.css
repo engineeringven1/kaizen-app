@@ -110,11 +110,45 @@ button, input, select, textarea {
   font-size: 2rem;
 }
 
+.filters-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .filters {
   display: grid;
   gap: 14px;
   grid-template-columns: 2fr 1fr auto auto;
   align-items: end;
+}
+
+.tab-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--muted);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.15s, color 0.15s;
+}
+
+.tab-btn:hover {
+  background: rgba(124, 156, 255, 0.14);
+  color: var(--text);
+}
+
+.tab-btn-active {
+  background: var(--primary);
+  color: #081020;
+  border-color: var(--primary);
 }
 
 .field-group {
@@ -345,6 +379,10 @@ th {
   .filters,
   .detail-layout {
     grid-template-columns: 1fr;
+  }
+
+  .tab-group {
+    justify-content: flex-start;
   }
 
   .topbar {

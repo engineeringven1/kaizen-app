@@ -9,7 +9,8 @@ export default async function HomePage({ searchParams }) {
   const filters = {
     q: searchParams?.q || '',
     country: searchParams?.country || '',
-    onlyPending: searchParams?.onlyPending === 'true'
+    onlyPending: searchParams?.onlyPending === 'true',
+    interest: searchParams?.interest || 'todos'
   };
 
   try {
