@@ -3,17 +3,24 @@ import LogoutButton from '@/components/LogoutButton';
 export default function AppLayout({ children }) {
   return (
     <div className="shell">
-      <header className="topbar">
-        <div>
-          <p className="eyebrow">Kaizen Structures</p>
-          <h1>Leads · Panel de secretaria</h1>
-        </div>
-        <nav style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <a href="/">Dashboard</a>
-          <LogoutButton />
-        </nav>
-      </header>
-      <main>{children}</main>
+      <div className="topbar-wrap">
+        <header className="topbar">
+          <div className="topbar-brand">
+            <div className="topbar-logo">K</div>
+            <div className="topbar-brand-text">
+              <span className="topbar-eyebrow">Kaizen Structures</span>
+              <span className="topbar-title">Panel de secretaria</span>
+            </div>
+          </div>
+          <nav className="topbar-nav">
+            <a href="/">Dashboard</a>
+            <LogoutButton />
+          </nav>
+        </header>
+      </div>
+      <div className="page-content">
+        {children}
+      </div>
     </div>
   );
 }
