@@ -1,6 +1,7 @@
 export const dynamic = 'force-dynamic';
 
 import DashboardCards from '@/components/DashboardCards';
+import DashboardCharts from '@/components/DashboardCharts';
 import DashboardPipeline from '@/components/DashboardPipeline';
 import LeadFilters from '@/components/LeadFilters';
 import LeadTable from '@/components/LeadTable';
@@ -31,6 +32,7 @@ export default async function HomePage({ searchParams }) {
           </div>
         </section>
 
+        <DashboardCharts stats={stats} />
         <DashboardCards stats={stats} />
         <DashboardPipeline stats={stats} />
         <LeadFilters searchParams={searchParams} countries={stats.countries} />
