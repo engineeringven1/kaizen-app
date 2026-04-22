@@ -493,9 +493,6 @@ table {
 }
 
 thead {
-  position: sticky;
-  top: 64px;
-  z-index: 5;
   background: rgba(8, 25, 22, 0.98);
 }
 
