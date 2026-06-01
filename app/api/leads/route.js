@@ -28,6 +28,8 @@ export async function POST(request) {
 
     const now = new Date().toISOString();
 
+    const edadRaw = parseInt(body.edad, 10);
+
     const payload = {
       nombre_completo: nombre,
       email: cleanText(body.email),
@@ -35,6 +37,13 @@ export async function POST(request) {
       pais: cleanText(body.pais),
       ciudad: cleanText(body.ciudad),
       servicio_requerido: cleanText(body.servicio_requerido),
+      tipo_obra: cleanText(body.tipo_obra),
+      rol_en_proyecto: cleanText(body.rol_en_proyecto),
+      urgencia_proyecto: cleanText(body.urgencia_proyecto),
+      frecuencia_subcontratacion: cleanText(body.frecuencia_subcontratacion),
+      material_preferido: cleanText(body.material_preferido),
+      tamano_proyecto: cleanText(body.tamano_proyecto),
+      edad: Number.isFinite(edadRaw) ? edadRaw : null,
       whatsapp: body.whatsapp !== false,
       observaciones: cleanText(body.observaciones),
       actualizado_por:

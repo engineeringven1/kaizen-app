@@ -10,6 +10,13 @@ const EMPTY = {
   pais: '',
   ciudad: '',
   servicio_requerido: '',
+  tipo_obra: '',
+  rol_en_proyecto: '',
+  urgencia_proyecto: '',
+  frecuencia_subcontratacion: '',
+  material_preferido: '',
+  tamano_proyecto: '',
+  edad: '',
   whatsapp: true,
   observaciones: '',
 };
@@ -152,7 +159,17 @@ export default function AddLeadModal() {
                       type="text"
                       value={form.servicio_requerido}
                       onChange={updateText('servicio_requerido')}
-                      placeholder="Ej: Construcción, Remodelación..."
+                      placeholder="Ej: dibujo de planos, construcción..."
+                    />
+                  </div>
+                  <div className="field-group">
+                    <label htmlFor="al-edad">Edad</label>
+                    <input
+                      id="al-edad"
+                      type="text"
+                      value={form.edad}
+                      onChange={updateText('edad')}
+                      placeholder="34"
                     />
                   </div>
                 </div>
@@ -165,6 +182,72 @@ export default function AddLeadModal() {
                   />
                   Tiene WhatsApp
                 </label>
+              </div>
+
+              <div className="ops-section">
+                <h4>Datos del proyecto</h4>
+                <div className="checkbox-grid">
+                  <div className="field-group">
+                    <label htmlFor="al-tipo-obra">Tipo de obra</label>
+                    <input
+                      id="al-tipo-obra"
+                      type="text"
+                      value={form.tipo_obra}
+                      onChange={updateText('tipo_obra')}
+                      placeholder="Ej: institucional, residencial..."
+                    />
+                  </div>
+                  <div className="field-group">
+                    <label htmlFor="al-rol">Rol en proyecto</label>
+                    <input
+                      id="al-rol"
+                      type="text"
+                      value={form.rol_en_proyecto}
+                      onChange={updateText('rol_en_proyecto')}
+                      placeholder="Ej: arquitecto, contratista..."
+                    />
+                  </div>
+                  <div className="field-group">
+                    <label htmlFor="al-urgencia">Urgencia</label>
+                    <input
+                      id="al-urgencia"
+                      type="text"
+                      value={form.urgencia_proyecto}
+                      onChange={updateText('urgencia_proyecto')}
+                      placeholder="Ej: rápida (menos de 2 semanas)..."
+                    />
+                  </div>
+                  <div className="field-group">
+                    <label htmlFor="al-frecuencia">Frecuencia subcontratación</label>
+                    <input
+                      id="al-frecuencia"
+                      type="text"
+                      value={form.frecuencia_subcontratacion}
+                      onChange={updateText('frecuencia_subcontratacion')}
+                      placeholder="Ej: sí, frecuentemente..."
+                    />
+                  </div>
+                  <div className="field-group">
+                    <label htmlFor="al-material">Material preferido</label>
+                    <input
+                      id="al-material"
+                      type="text"
+                      value={form.material_preferido}
+                      onChange={updateText('material_preferido')}
+                      placeholder="Ej: concreto, acero..."
+                    />
+                  </div>
+                  <div className="field-group">
+                    <label htmlFor="al-tamano">Tamaño del proyecto</label>
+                    <input
+                      id="al-tamano"
+                      type="text"
+                      value={form.tamano_proyecto}
+                      onChange={updateText('tamano_proyecto')}
+                      placeholder="Ej: entre 1.000 m2 y 10.000 m2..."
+                    />
+                  </div>
+                </div>
               </div>
 
               <div className="ops-section">
