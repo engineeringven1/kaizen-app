@@ -5,6 +5,7 @@ import DashboardCharts from '@/components/DashboardCharts';
 import DashboardPipeline from '@/components/DashboardPipeline';
 import LeadFilters from '@/components/LeadFilters';
 import LeadTable from '@/components/LeadTable';
+import AddLeadModal from '@/components/AddLeadModal';
 import { buildDashboardStats, getAllLeads } from '@/lib/leads';
 
 export default async function HomePage({ searchParams }) {
@@ -22,13 +23,16 @@ export default async function HomePage({ searchParams }) {
     return (
       <div className="page-stack">
         <section className="hero card">
-          <div>
-            <p className="eyebrow">Operacion diaria</p>
-            <h2>Seguimiento comercial y panel de secretaria</h2>
-            <p>
-              La secretaria solo debe actualizar seguimiento comercial: interes, objeciones,
-              cotizacion, newsletter, seguimientos 24h / 72h / 7 dias, observaciones y responsable.
-            </p>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '16px' }}>
+            <div>
+              <p className="eyebrow">Operacion diaria</p>
+              <h2>Seguimiento comercial y panel de secretaria</h2>
+              <p>
+                La secretaria solo debe actualizar seguimiento comercial: interes, objeciones,
+                cotizacion, newsletter, seguimientos 24h / 72h / 7 dias, observaciones y responsable.
+              </p>
+            </div>
+            <AddLeadModal />
           </div>
         </section>
 
