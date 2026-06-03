@@ -29,6 +29,8 @@ export default function LeadSummaryCard({ lead }) {
     ['Material preferido', lead.material_preferido],
     ['Tamaño proyecto', lead.tamano_proyecto],
     ['Edad', lead.edad],
+    ['Presupuesto Estimado', lead.presupuesto_estimado],
+    ['¿Tiene Proyecto Arquitectónico?', lead.tiene_proyecto_arquitectonico],
     ['Fecha registro', lead.fecha_registro],
     ['Score ponderado', lead.p_promedio_ponderado]
   ];
